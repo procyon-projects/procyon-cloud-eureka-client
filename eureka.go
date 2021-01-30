@@ -49,28 +49,28 @@ const (
 )
 
 type InstanceInfo struct {
-	InstanceId                    string         `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	App                           string         `json:"app" xml:"app"`
-	AppGroupName                  string         `json:"appGroupName" xml:"appGroupName"`
-	IpAddr                        string         `json:"ipAddr" xml:"ipAddr"`
-	Port                          PortWrapper    `json:"port" xml:"port"`
-	SecurePort                    PortWrapper    `json:"securePort" xml:"securePort"`
-	HomePageUrl                   string         `json:"homePageUrl" xml:"homePageUrl"`
-	StatusPageUrl                 string         `json:"statusPageUrl" xml:"statusPageUrl"`
-	HealthCheckUrl                string         `json:"healthCheckUrl" xml:"healthCheckUrl"`
-	SecureHealthCheckUrl          string         `json:"secureHealthCheckUrl" xml:"secureHealthCheckUrl"`
-	VipAddress                    string         `json:"vipAddress" xml:"vipAddress"`
-	SecureVipAddress              string         `json:"secureVipAddress" xml:"secureVipAddress"`
-	CountryId                     int            `json:"countryId" xml:"countryId"`
-	DataCenterInfo                DataCenterInfo `json:"dataCenterInfo" xml:"dataCenterInfo"`
-	HostName                      string         `json:"hostName" xml:"hostName"`
-	Status                        InstanceStatus `json:"status" xml:"status"`
-	OverriddenStatus              InstanceStatus `json:"overriddenstatus" xml:"overriddenstatus"`
-	LeaseInfo                     LeaseInfo      `json:"leaseInfo" xml:"leaseInfo"`
-	IsCoordinatingDiscoveryServer bool           `json:"isCoordinatingDiscoveryServer" xml:"isCoordinatingDiscoveryServer"`
-	Metadata                      Metadata       `json:"metadata" xml:"metadata"`
-	LastUpdatedTimestamp          int            `json:"lastUpdatedTimestamp" xml:"lastUpdatedTimestamp"`
-	LastDirtyTimestamp            int            `json:"lastDirtyTimestamp" xml:"lastDirtyTimestamp"`
-	ActionType                    ActionType     `json:"actionType" xml:"actionType"`
-	AsgName                       string         `json:"asgName" xml:"asgName"`
+	InstanceId                    string            `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	AppName                       string            `json:"app" xml:"app"`
+	AppGroupName                  string            `json:"appGroupName" xml:"appGroupName"`
+	IpAddr                        string            `json:"ipAddr" xml:"ipAddr"`
+	Port                          *PortWrapper      `json:"port" xml:"port"`
+	SecurePort                    *PortWrapper      `json:"securePort" xml:"securePort"`
+	HomePageUrl                   string            `json:"homePageUrl" xml:"homePageUrl"`
+	StatusPageUrl                 string            `json:"statusPageUrl" xml:"statusPageUrl"`
+	HealthCheckUrl                string            `json:"healthCheckUrl" xml:"healthCheckUrl"`
+	SecureHealthCheckUrl          string            `json:"secureHealthCheckUrl" xml:"secureHealthCheckUrl"`
+	VipAddress                    string            `json:"vipAddress" xml:"vipAddress"`
+	SecureVipAddress              string            `json:"secureVipAddress" xml:"secureVipAddress"`
+	CountryId                     int               `json:"countryId" xml:"countryId"`
+	DataCenterInfo                *DataCenterInfo   `json:"dataCenterInfo" xml:"dataCenterInfo"`
+	HostName                      string            `json:"hostName" xml:"hostName"`
+	Status                        InstanceStatus    `json:"status" xml:"status"`
+	OverriddenStatus              InstanceStatus    `json:"overriddenstatus" xml:"overriddenstatus"`
+	LeaseInfo                     *LeaseInfo        `json:"leaseInfo" xml:"leaseInfo"`
+	IsCoordinatingDiscoveryServer bool              `json:"isCoordinatingDiscoveryServer" xml:"isCoordinatingDiscoveryServer"`
+	Metadata                      map[string]string `json:"metadata" xml:"metadata"`
+	LastUpdatedTimestamp          int               `json:"lastUpdatedTimestamp" xml:"lastUpdatedTimestamp"`
+	LastDirtyTimestamp            int               `json:"lastDirtyTimestamp" xml:"lastDirtyTimestamp"`
+	ActionType                    ActionType        `json:"actionType" xml:"actionType"`
+	AsgName                       string            `json:"asgName" xml:"asgName"`
 }

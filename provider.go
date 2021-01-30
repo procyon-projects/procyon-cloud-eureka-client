@@ -4,6 +4,7 @@ import (
 	core "github.com/procyon-projects/procyon-core"
 	"net/url"
 	"os"
+	"strings"
 	"sync"
 )
 
@@ -40,32 +41,35 @@ func (provider *DefaultInstanceInfoProvider) GetInstanceInfo() *InstanceInfo {
 
 	instanceInfo := &InstanceInfo{
 		InstanceId:     provider.instanceProperties.InstanceId,
-		App:            provider.instanceProperties.ApplicationName,
+		AppName:        strings.ToUpper(provider.instanceProperties.ApplicationName),
 		AppGroupName:   provider.instanceProperties.ApplicationGroupName,
 		IpAddr:         provider.instanceProperties.IpAddr,
 		HomePageUrl:    provider.getUrl(false, hostName, port, provider.instanceProperties.HomePageUrl),
 		StatusPageUrl:  provider.getUrl(false, hostName, port, provider.instanceProperties.StatusPageUrl),
 		HealthCheckUrl: provider.getUrl(false, hostName, port, provider.instanceProperties.HealthCheckUrl),
-		DataCenterInfo: provider.instanceProperties.DataCenterInfo,
-		HostName:       provider.instanceProperties.Hostname,
+		DataCenterInfo: &DataCenterInfo{
+			provider.instanceProperties.DataCenterInfo.Name,
+		},
+		HostName: provider.instanceProperties.Hostname,
 	}
 
 	if provider.instanceProperties.NonSecurePortEnabled {
-		instanceInfo.VipAddress = provider.getUrl(false, hostName, port, "")
-		instanceInfo.Port = PortWrapper{
+		instanceInfo.VipAddress = provider.instanceProperties.ApplicationName
+		instanceInfo.Port = &PortWrapper{
 			Enabled: true,
 			Port:    provider.instanceProperties.NonSecurePort,
 		}
 	}
 
 	if provider.instanceProperties.SecurePortEnabled {
-		instanceInfo.SecureVipAddress = provider.getUrl(true, hostName, port, "")
-		instanceInfo.SecurePort = PortWrapper{
+		instanceInfo.SecureVipAddress = provider.instanceProperties.ApplicationName
+		instanceInfo.SecurePort = &PortWrapper{
 			Enabled: true,
 			Port:    provider.instanceProperties.SecurePort,
 		}
 		instanceInfo.SecureHealthCheckUrl = provider.getUrl(true, hostName, port, provider.instanceProperties.HealthCheckUrl)
 	}
+	instanceInfo.Status = InstanceStatusStarting
 
 	provider.instanceInfo = instanceInfo
 	return instanceInfo

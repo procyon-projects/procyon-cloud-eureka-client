@@ -16,6 +16,8 @@ github.com/procyon-projects/goo v1.0.4 h1:EnxgrOXmWOvFvXqimkAfSGL1d5BGlwzoScIVFN
 github.com/procyon-projects/goo v1.0.4/go.mod h1:Dzcp0gzz4YEmD+0Kl4FBHRcCl5pufBCKlkyH65azkbU=
 github.com/procyon-projects/procyon-cloud v0.0.0-20210130135444-faf76806770a h1:mm1xJrcc2j8DAgyQs0qMpPl9U7AZ2zkJ1Exs7OIhbUE=
 github.com/procyon-projects/procyon-cloud v0.0.0-20210130135444-faf76806770a/go.mod h1:bI4meY4fRES4UUWjN+77wAL2UMl/Pl0/4i3bK8aHLAc=
+github.com/procyon-projects/procyon-cloud v0.0.0-20210130220046-8f1a10050e8a h1:HL7joVMfpA69jI0AbXmvmF6/M1uwBoDORY9RjZ1R978=
+github.com/procyon-projects/procyon-cloud v0.0.0-20210130220046-8f1a10050e8a/go.mod h1:bI4meY4fRES4UUWjN+77wAL2UMl/Pl0/4i3bK8aHLAc=
 github.com/procyon-projects/procyon-configure v0.0.0-20210107222610-71e0139ae0f7 h1:N5ViK2HMygXTK3sC+FCOdEqKhqWl5ILIkD8Wc3ozNzs=
 github.com/procyon-projects/procyon-configure v0.0.0-20210107222610-71e0139ae0f7/go.mod h1:mrW5i+XnZ4QyYdpyfyzy4/jrTkbxTsib680DRtDNRKw=
 github.com/procyon-projects/procyon-context v0.0.0-20201214184807-fb54799e7c5f/go.mod h1:c2+akz4eAI0peC9qboZv7AdeqpVOKlrMt2TgvQ9Xn78=
@@ -25,6 +27,8 @@ github.com/procyon-projects/procyon-core v0.0.0-20201203210426-57669e824045/go.m
 github.com/procyon-projects/procyon-core v0.0.0-20201214183449-40fdf244aa24/go.mod h1:Pc66laRRWzHtdZiu/Kq+UHd3bWJxIlH+eSTndKVnR+4=
 github.com/procyon-projects/procyon-core v0.0.0-20201220152409-8be6bfca0807 h1:6MZKCl1bVN21l7+W0DDOZ+e4+xov1tnJHTO5qlKGtP8=
 github.com/procyon-projects/procyon-core v0.0.0-20201220152409-8be6bfca0807/go.mod h1:Pc66laRRWzHtdZiu/Kq+UHd3bWJxIlH+eSTndKVnR+4=
+github.com/procyon-projects/procyon-core v0.0.0-20210108204647-4afc20350c83 h1:fGSIGDMenp8iOdwNd/tmQXJrBL8gmtMCzeuSfZL+7pc=
+github.com/procyon-projects/procyon-core v0.0.0-20210108204647-4afc20350c83/go.mod h1:Pc66laRRWzHtdZiu/Kq+UHd3bWJxIlH+eSTndKVnR+4=
 github.com/procyon-projects/procyon-peas v0.0.0-20201214184332-80129abad3b3/go.mod h1:uUgrHDtGUZPliiQCDB5AnjeZQjJWd5HPWE7dUAkLuQc=
 github.com/procyon-projects/procyon-peas v0.0.0-20201216175850-6e7929fd4292 h1:RKtQXp0Hnmf3Suyp+fzkvu7GT0YMImxqf0jsPm7Wzr8=
 github.com/procyon-projects/procyon-peas v0.0.0-20201216175850-6e7929fd4292/go.mod h1:uUgrHDtGUZPliiQCDB5AnjeZQjJWd5HPWE7dUAkLuQc=
