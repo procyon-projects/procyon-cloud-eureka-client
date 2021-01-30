@@ -1,8 +1,8 @@
 package eureka
 
 type PortWrapper struct {
-	Enabled bool
-	Port    int
+	Enabled bool `json:"@enabled" xml:",chardata"`
+	Port    int  `json:"$" xml:"enabled,attr"`
 }
 
 type DataCenterName string
@@ -14,7 +14,7 @@ const (
 )
 
 type DataCenterInfo struct {
-	Name DataCenterName
+	Name DataCenterName `json:"name" xml:"name"`
 }
 
 type InstanceStatus string
@@ -23,7 +23,7 @@ const (
 	InstanceStatusUp           InstanceStatus = "UP"
 	InstanceStatusDown         InstanceStatus = "DOWN"
 	InstanceStatusStarting     InstanceStatus = "STARTING"
-	InstanceStatusOutOfService InstanceStatus = "OUT OF SERVICE"
+	InstanceStatusOutOfService InstanceStatus = "OUT_OF_SERVICE"
 	InstanceStatusUnknown      InstanceStatus = "UNKNOWN"
 )
 
@@ -31,13 +31,13 @@ type Metadata struct {
 }
 
 type LeaseInfo struct {
-	RenewalIntervalInSecs      int
-	DurationInSecs             int
-	RegistrationTimestamp      int
-	LastRenewalTimestamp       int
-	LastRenewalTimestampLegacy int
-	EvictionTimestamp          int
-	ServiceUpTimestamp         int
+	RenewalIntervalInSecs      int `json:"renewalIntervalInSecs,omitempty" xml:"renewalIntervalInSecs,omitempty"`
+	DurationInSecs             int `json:"durationInSecs,omitempty" xml:"durationInSecs,omitempty"`
+	RegistrationTimestamp      int `json:"registrationTimestamp,omitempty" xml:"registrationTimestamp,omitempty"`
+	LastRenewalTimestamp       int `json:"lastRenewalTimestamp,omitempty" xml:"lastRenewalTimestamp,omitempty"`
+	LastRenewalTimestampLegacy int `json:"renewalTimestamp,omitempty" xml:"renewalTimestamp,omitempty"`
+	EvictionTimestamp          int `json:"evictionTimestamp,omitempty" xml:"evictionTimestamp,omitempty"`
+	ServiceUpTimestamp         int `json:"serviceUpTimestamp,omitempty" xml:"serviceUpTimestamp,omitempty"`
 }
 
 type ActionType string
@@ -49,28 +49,28 @@ const (
 )
 
 type InstanceInfo struct {
-	InstanceId                    string
-	App                           string
-	AppGroupName                  string
-	IpAddr                        string
-	Port                          PortWrapper
-	SecurePort                    PortWrapper
-	HomePageUrl                   string
-	StatusPageUrl                 string
-	HealthCheckUrl                string
-	SecureHealthCheckUrl          string
-	VipAddress                    string
-	SecureVipAddress              string
-	CountryId                     int
-	DataCenterInfo                DataCenterInfo
-	HostName                      string
-	Status                        InstanceStatus
-	OverriddenStatus              InstanceStatus
-	LeaseInfo                     LeaseInfo
-	IsCoordinatingDiscoveryServer bool
-	Metadata                      Metadata
-	LastUpdatedTimestamp          int
-	LastDirtyTimestamp            int
-	ActionType                    ActionType
-	AsgName                       string
+	InstanceId                    string         `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	App                           string         `json:"app" xml:"app"`
+	AppGroupName                  string         `json:"appGroupName" xml:"appGroupName"`
+	IpAddr                        string         `json:"ipAddr" xml:"ipAddr"`
+	Port                          PortWrapper    `json:"port" xml:"port"`
+	SecurePort                    PortWrapper    `json:"securePort" xml:"securePort"`
+	HomePageUrl                   string         `json:"homePageUrl" xml:"homePageUrl"`
+	StatusPageUrl                 string         `json:"statusPageUrl" xml:"statusPageUrl"`
+	HealthCheckUrl                string         `json:"healthCheckUrl" xml:"healthCheckUrl"`
+	SecureHealthCheckUrl          string         `json:"secureHealthCheckUrl" xml:"secureHealthCheckUrl"`
+	VipAddress                    string         `json:"vipAddress" xml:"vipAddress"`
+	SecureVipAddress              string         `json:"secureVipAddress" xml:"secureVipAddress"`
+	CountryId                     int            `json:"countryId" xml:"countryId"`
+	DataCenterInfo                DataCenterInfo `json:"dataCenterInfo" xml:"dataCenterInfo"`
+	HostName                      string         `json:"hostName" xml:"hostName"`
+	Status                        InstanceStatus `json:"status" xml:"status"`
+	OverriddenStatus              InstanceStatus `json:"overriddenstatus" xml:"overriddenstatus"`
+	LeaseInfo                     LeaseInfo      `json:"leaseInfo" xml:"leaseInfo"`
+	IsCoordinatingDiscoveryServer bool           `json:"isCoordinatingDiscoveryServer" xml:"isCoordinatingDiscoveryServer"`
+	Metadata                      Metadata       `json:"metadata" xml:"metadata"`
+	LastUpdatedTimestamp          int            `json:"lastUpdatedTimestamp" xml:"lastUpdatedTimestamp"`
+	LastDirtyTimestamp            int            `json:"lastDirtyTimestamp" xml:"lastDirtyTimestamp"`
+	ActionType                    ActionType     `json:"actionType" xml:"actionType"`
+	AsgName                       string         `json:"asgName" xml:"asgName"`
 }
