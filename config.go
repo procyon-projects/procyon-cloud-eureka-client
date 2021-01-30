@@ -2,6 +2,7 @@ package eureka
 
 import (
 	core "github.com/procyon-projects/procyon-core"
+	"net"
 	"os"
 	"strconv"
 )
@@ -40,13 +41,17 @@ func (clientConfiguration *ClientProperties) GetConfigurationPrefix() string {
 type InstanceProperties struct {
 	ApplicationName      string         `json:"appName" yaml:"appName"`
 	ApplicationGroupName string         `json:"appGroupName" yaml:"appGroupName"`
+	IpAddr               string         `json:"ipAddr" yaml:"ipAddr"`
 	DataCenterInfo       DataCenterInfo `json:"dataCenterInfo" yaml:"dataCenterInfo"`
 	SecurePort           int            `json:"securePort" yaml:"securePort"`
 	NonSecurePort        int            `json:"nonSecurePort" yaml:"nonSecurePort"`
+	NonSecurePortEnabled bool           `json:"nonSecurePortEnabled " yaml:"nonSecurePortEnabled"`
+	SecurePortEnabled    bool           `json:"securePortEnabled " yaml:"securePortEnabled"`
 	InstanceId           string         `json:"instanceId" yaml:"instanceId"`
 	StatusPageUrl        string         `json:"statusPageUrl" yaml:"statusPageUrl"`
 	HomePageUrl          string         `json:"homePageUrl" yaml:"homePageUrl"`
 	HealthCheckUrl       string         `json:"healthCheckUrl" yaml:"healthCheckUrl"`
+	Hostname             string         `json:"hostname" yaml:"hostname"`
 }
 
 func newInstanceProperties(environment core.Environment) *InstanceProperties {
@@ -56,11 +61,13 @@ func newInstanceProperties(environment core.Environment) *InstanceProperties {
 		DataCenterInfo: DataCenterInfo{
 			DataCenterMyOwn,
 		},
-		SecurePort:     securePort,
-		NonSecurePort:  nonSecurePort,
-		StatusPageUrl:  statusPageUrlPath,
-		HomePageUrl:    homePageUrlPath,
-		HealthCheckUrl: healthCheckUrlPath,
+		SecurePort:           securePort,
+		NonSecurePort:        nonSecurePort,
+		NonSecurePortEnabled: true,
+		SecurePortEnabled:    false,
+		StatusPageUrl:        statusPageUrlPath,
+		HomePageUrl:          homePageUrlPath,
+		HealthCheckUrl:       healthCheckUrlPath,
 	}
 	instanceProperties.initialize(environment)
 	return instanceProperties
@@ -71,11 +78,13 @@ func (instanceProperties *InstanceProperties) initialize(environment core.Enviro
 	instanceProperties.ApplicationName = appName
 	instanceProperties.ApplicationGroupName = appName
 
-	// instance id
+	// instance id, hostname and ipAddr
 	hostName, err := os.Hostname()
 	if err != nil {
 		panic(err)
 	}
+	instanceProperties.Hostname = hostName
+	instanceProperties.IpAddr = instanceProperties.getFirstNonLoopbackIpAddr(hostName)
 
 	namePart := instanceProperties.combineParts(hostName, appName, ":")
 	port := environment.GetProperty("server.port", "8080").(string)
@@ -97,6 +106,25 @@ func (instanceProperties *InstanceProperties) combineParts(firstPart, secondPart
 		combined = secondPart
 	}
 	return combined
+}
+
+func (instanceProperties *InstanceProperties) getFirstNonLoopbackIpAddr(hostName string) string {
+	addresses, err := net.LookupIP(hostName)
+	if err != nil {
+		return unknown
+	} else {
+		for _, ip := range addresses {
+			if ip == nil || ip.IsLoopback() {
+				continue
+			}
+			ip = ip.To4()
+			if ip == nil {
+				continue
+			}
+			return ip.String()
+		}
+	}
+	return unknown
 }
 
 func (instanceProperties *InstanceProperties) GetConfigurationPrefix() string {
