@@ -1,8 +1,19 @@
 package eureka
 
+type Applications struct {
+	VersionsDelta string        `json:"versions__delta" xml:"versions__delta"`
+	AppsHashcode  string        `json:"apps__hashcode" xml:"apps__hashcode"`
+	Applications  []Application `json:"application,omitempty" xml:"application,omitempty"`
+}
+
+type Application struct {
+	Name      string         `json:"name" xml:"name"`
+	Instances []InstanceInfo `json:"instance" xml:"instance"`
+}
+
 type PortWrapper struct {
-	Enabled bool `json:"@enabled" xml:",chardata"`
-	Port    int  `json:"$" xml:"enabled,attr"`
+	Enabled string `json:"@enabled" xml:",chardata"`
+	Port    int    `json:"$" xml:"enabled,attr"`
 }
 
 type DataCenterName string
@@ -14,7 +25,8 @@ const (
 )
 
 type DataCenterInfo struct {
-	Name DataCenterName `json:"name" xml:"name"`
+	Name  DataCenterName `json:"name" xml:"name"`
+	Class string         `json:"@class" xml:"class,attr"`
 }
 
 type InstanceStatus string
@@ -67,10 +79,10 @@ type InstanceInfo struct {
 	Status                        InstanceStatus    `json:"status" xml:"status"`
 	OverriddenStatus              InstanceStatus    `json:"overriddenstatus" xml:"overriddenstatus"`
 	LeaseInfo                     *LeaseInfo        `json:"leaseInfo" xml:"leaseInfo"`
-	IsCoordinatingDiscoveryServer bool              `json:"isCoordinatingDiscoveryServer" xml:"isCoordinatingDiscoveryServer"`
-	Metadata                      map[string]string `json:"metadata" xml:"metadata"`
-	LastUpdatedTimestamp          int               `json:"lastUpdatedTimestamp" xml:"lastUpdatedTimestamp"`
-	LastDirtyTimestamp            int               `json:"lastDirtyTimestamp" xml:"lastDirtyTimestamp"`
+	IsCoordinatingDiscoveryServer string            `json:"isCoordinatingDiscoveryServer" xml:"isCoordinatingDiscoveryServer"`
+	Metadata                      map[string]string `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	LastUpdatedTimestamp          string            `json:"lastUpdatedTimestamp" xml:"lastUpdatedTimestamp"`
+	LastDirtyTimestamp            string            `json:"lastDirtyTimestamp" xml:"lastDirtyTimestamp"`
 	ActionType                    ActionType        `json:"actionType" xml:"actionType"`
 	AsgName                       string            `json:"asgName" xml:"asgName"`
 }

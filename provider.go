@@ -48,7 +48,7 @@ func (provider *DefaultInstanceInfoProvider) GetInstanceInfo() *InstanceInfo {
 		StatusPageUrl:  provider.getUrl(false, hostName, port, provider.instanceProperties.StatusPageUrl),
 		HealthCheckUrl: provider.getUrl(false, hostName, port, provider.instanceProperties.HealthCheckUrl),
 		DataCenterInfo: &DataCenterInfo{
-			provider.instanceProperties.DataCenterInfo.Name,
+			Name: provider.instanceProperties.DataCenterInfo.Name,
 		},
 		HostName: provider.instanceProperties.Hostname,
 	}
@@ -56,7 +56,7 @@ func (provider *DefaultInstanceInfoProvider) GetInstanceInfo() *InstanceInfo {
 	if provider.instanceProperties.NonSecurePortEnabled {
 		instanceInfo.VipAddress = provider.instanceProperties.ApplicationName
 		instanceInfo.Port = &PortWrapper{
-			Enabled: true,
+			Enabled: "true",
 			Port:    provider.instanceProperties.NonSecurePort,
 		}
 	}
@@ -64,7 +64,7 @@ func (provider *DefaultInstanceInfoProvider) GetInstanceInfo() *InstanceInfo {
 	if provider.instanceProperties.SecurePortEnabled {
 		instanceInfo.SecureVipAddress = provider.instanceProperties.ApplicationName
 		instanceInfo.SecurePort = &PortWrapper{
-			Enabled: true,
+			Enabled: "true",
 			Port:    provider.instanceProperties.SecurePort,
 		}
 		instanceInfo.SecureHealthCheckUrl = provider.getUrl(true, hostName, port, provider.instanceProperties.HealthCheckUrl)

@@ -60,6 +60,7 @@ func newInstanceProperties(environment core.Environment) *InstanceProperties {
 		ApplicationGroupName: unknown,
 		DataCenterInfo: DataCenterInfo{
 			DataCenterMyOwn,
+			"com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
 		},
 		SecurePort:           securePort,
 		NonSecurePort:        nonSecurePort,
