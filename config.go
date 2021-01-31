@@ -23,8 +23,8 @@ const (
 )
 
 type ClientProperties struct {
-	RegistryWithEureka bool `json:"registryWithEureka" yaml:"registryWithEureka"`
-	FetchRegistry      bool `json:"fetchRegistry" yaml:"fetchRegistry"`
+	RegistryWithEureka bool `json:"registryWithEureka,omitempty" yaml:"registryWithEureka,omitempty"`
+	FetchRegistry      bool `json:"fetchRegistry,omitempty" yaml:"fetchRegistry,omitempty"`
 }
 
 func newClientProperties() *ClientProperties {
@@ -35,23 +35,23 @@ func newClientProperties() *ClientProperties {
 }
 
 func (clientConfiguration *ClientProperties) GetConfigurationPrefix() string {
-	return "cloud.eureka.client"
+	return "procyon.cloud.eureka.client"
 }
 
 type InstanceProperties struct {
-	ApplicationName      string         `json:"appName" yaml:"appName"`
-	ApplicationGroupName string         `json:"appGroupName" yaml:"appGroupName"`
-	IpAddr               string         `json:"ipAddr" yaml:"ipAddr"`
-	DataCenterInfo       DataCenterInfo `json:"dataCenterInfo" yaml:"dataCenterInfo"`
-	SecurePort           int            `json:"securePort" yaml:"securePort"`
-	NonSecurePort        int            `json:"nonSecurePort" yaml:"nonSecurePort"`
-	NonSecurePortEnabled bool           `json:"nonSecurePortEnabled " yaml:"nonSecurePortEnabled"`
-	SecurePortEnabled    bool           `json:"securePortEnabled " yaml:"securePortEnabled"`
-	InstanceId           string         `json:"instanceId" yaml:"instanceId"`
-	StatusPageUrl        string         `json:"statusPageUrl" yaml:"statusPageUrl"`
-	HomePageUrl          string         `json:"homePageUrl" yaml:"homePageUrl"`
-	HealthCheckUrl       string         `json:"healthCheckUrl" yaml:"healthCheckUrl"`
-	Hostname             string         `json:"hostname" yaml:"hostname"`
+	ApplicationName      string         `json:"appName,omitempty" yaml:"appName,omitempty"`
+	ApplicationGroupName string         `json:"appGroupName,omitempty" yaml:"appGroupName,omitempty"`
+	IpAddr               string         `json:"ipAddr,omitempty" yaml:"ipAddr,omitempty"`
+	DataCenterInfo       DataCenterInfo `json:"dataCenterInfo,omitempty" yaml:"dataCenterInfo,omitempty"`
+	SecurePort           int            `json:"securePort,omitempty" yaml:"securePort,omitempty"`
+	NonSecurePort        int            `json:"nonSecurePort,omitempty" yaml:"nonSecurePort,omitempty"`
+	NonSecurePortEnabled bool           `json:"nonSecurePortEnabled,omitempty" yaml:"nonSecurePortEnabled,omitempty"`
+	SecurePortEnabled    bool           `json:"securePortEnabled,omitempty" yaml:"securePortEnabled,omitempty"`
+	InstanceId           string         `json:"instanceId,omitempty" yaml:"instanceId,omitempty"`
+	StatusPageUrl        string         `json:"statusPageUrl,omitempty" yaml:"statusPageUrl,omitempty"`
+	HomePageUrl          string         `json:"homePageUrl,omitempty" yaml:"homePageUrl,omitempty"`
+	HealthCheckUrl       string         `json:"healthCheckUrl,omitempty" yaml:"healthCheckUrl,omitempty"`
+	Hostname             string         `json:"hostname,omitempty" yaml:"hostname,omitempty"`
 }
 
 func newInstanceProperties(environment core.Environment) *InstanceProperties {
@@ -128,5 +128,5 @@ func (instanceProperties *InstanceProperties) getFirstNonLoopbackIpAddr(hostName
 }
 
 func (instanceProperties *InstanceProperties) GetConfigurationPrefix() string {
-	return "cloud.eureka.instance"
+	return "procyon.cloud.eureka.instance"
 }

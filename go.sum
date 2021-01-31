@@ -20,9 +20,13 @@ github.com/procyon-projects/procyon-cloud v0.0.0-20210130220046-8f1a10050e8a h1:
 github.com/procyon-projects/procyon-cloud v0.0.0-20210130220046-8f1a10050e8a/go.mod h1:bI4meY4fRES4UUWjN+77wAL2UMl/Pl0/4i3bK8aHLAc=
 github.com/procyon-projects/procyon-configure v0.0.0-20210107222610-71e0139ae0f7 h1:N5ViK2HMygXTK3sC+FCOdEqKhqWl5ILIkD8Wc3ozNzs=
 github.com/procyon-projects/procyon-configure v0.0.0-20210107222610-71e0139ae0f7/go.mod h1:mrW5i+XnZ4QyYdpyfyzy4/jrTkbxTsib680DRtDNRKw=
+github.com/procyon-projects/procyon-configure v0.0.0-20210122231728-2eefc549f2b2 h1:mw/wQYMS0vjvtewK8kjhdJk9AEe1PGCjF62gX5yyRsI=
+github.com/procyon-projects/procyon-configure v0.0.0-20210122231728-2eefc549f2b2/go.mod h1:mrW5i+XnZ4QyYdpyfyzy4/jrTkbxTsib680DRtDNRKw=
 github.com/procyon-projects/procyon-context v0.0.0-20201214184807-fb54799e7c5f/go.mod h1:c2+akz4eAI0peC9qboZv7AdeqpVOKlrMt2TgvQ9Xn78=
 github.com/procyon-projects/procyon-context v0.0.0-20210107223212-5a4458edb955 h1:K6akzSjdK3zhZKUALDF69kS5UrQyYwCxRRwaQ1duSb0=
 github.com/procyon-projects/procyon-context v0.0.0-20210107223212-5a4458edb955/go.mod h1:tKeeB/WnuwUeZ0nhwr+dPvlw+SK433igXTPziDgJJFc=
+github.com/procyon-projects/procyon-context v0.0.0-20210131113519-986cb7898bbf h1:JiES5A1IMrwlnErBhgDdPKkrdoX31zSpo59yxmJDvNA=
+github.com/procyon-projects/procyon-context v0.0.0-20210131113519-986cb7898bbf/go.mod h1:tKeeB/WnuwUeZ0nhwr+dPvlw+SK433igXTPziDgJJFc=
 github.com/procyon-projects/procyon-core v0.0.0-20201203210426-57669e824045/go.mod h1:C4p1m4pJb1zVxnMGJZEop4PG2d41r6S8dyFtjtpRLcQ=
 github.com/procyon-projects/procyon-core v0.0.0-20201214183449-40fdf244aa24/go.mod h1:Pc66laRRWzHtdZiu/Kq+UHd3bWJxIlH+eSTndKVnR+4=
 github.com/procyon-projects/procyon-core v0.0.0-20201220152409-8be6bfca0807 h1:6MZKCl1bVN21l7+W0DDOZ+e4+xov1tnJHTO5qlKGtP8=
@@ -43,6 +47,8 @@ golang.org/x/sys v0.0.0-20191026070338-33540a1f6037/go.mod h1:h1NjWce9XRLGQEsW7w
 golang.org/x/sys v0.0.0-20201214095126-aec9a390925b/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20210105210732-16f7687f5001 h1:/dSxr6gT0FNI1MO5WLJo8mTmItROeOKTkDn+7OwWBos=
 golang.org/x/sys v0.0.0-20210105210732-16f7687f5001/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+golang.org/x/sys v0.0.0-20210124154548-22da62e12c0c h1:VwygUrnw9jn88c4u8GD3rZQbqrP/tgas88tPUbBxQrk=
+golang.org/x/sys v0.0.0-20210124154548-22da62e12c0c/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f h1:BLraFXnmrev5lT+xlilqcH8XK9/i0At2xKjWk4p6zsU=
 gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
