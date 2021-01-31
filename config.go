@@ -16,10 +16,10 @@ const (
 	securePort    = 443
 	nonSecurePort = 80
 
-	metricPrefix       = "/metrics"
-	statusPageUrlPath  = metricPrefix + "/info"
+	watchPrefix        = "/watch"
+	statusPageUrlPath  = watchPrefix + "/info"
 	homePageUrlPath    = "/"
-	healthCheckUrlPath = metricPrefix + "/health"
+	healthCheckUrlPath = watchPrefix + "/health"
 )
 
 type ClientProperties struct {

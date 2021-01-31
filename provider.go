@@ -48,7 +48,8 @@ func (provider *DefaultInstanceInfoProvider) GetInstanceInfo() *InstanceInfo {
 		StatusPageUrl:  provider.getUrl(false, hostName, port, provider.instanceProperties.StatusPageUrl),
 		HealthCheckUrl: provider.getUrl(false, hostName, port, provider.instanceProperties.HealthCheckUrl),
 		DataCenterInfo: &DataCenterInfo{
-			Name: provider.instanceProperties.DataCenterInfo.Name,
+			Name:  provider.instanceProperties.DataCenterInfo.Name,
+			Class: provider.instanceProperties.DataCenterInfo.Class,
 		},
 		HostName: provider.instanceProperties.Hostname,
 	}
