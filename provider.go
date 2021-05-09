@@ -4,6 +4,7 @@ import (
 	core "github.com/procyon-projects/procyon-core"
 	"net/url"
 	"os"
+	"strconv"
 	"strings"
 	"sync"
 )
@@ -51,26 +52,29 @@ func (provider *DefaultInstanceInfoProvider) GetInstanceInfo() *InstanceInfo {
 			Name:  provider.instanceProperties.DataCenterInfo.Name,
 			Class: provider.instanceProperties.DataCenterInfo.Class,
 		},
-		HostName: provider.instanceProperties.Hostname,
+		HostName:         provider.instanceProperties.Hostname,
+		CountryId:        1,
+		OverriddenStatus: "UNKNOWN",
+		LeaseInfo: &LeaseInfo{
+			RenewalIntervalInSecs: 30,
+			DurationInSecs:        90,
+		},
+		LastDirtyTimestamp: "0",
 	}
 
-	if provider.instanceProperties.NonSecurePortEnabled {
-		instanceInfo.VipAddress = provider.instanceProperties.ApplicationName
-		instanceInfo.Port = &PortWrapper{
-			Enabled: "true",
-			Port:    provider.instanceProperties.NonSecurePort,
-		}
+	instanceInfo.VipAddress = provider.instanceProperties.ApplicationName
+	instanceInfo.Port = &PortWrapper{
+		Enabled: strconv.FormatBool(provider.instanceProperties.NonSecurePortEnabled),
+		Port:    provider.instanceProperties.NonSecurePort,
 	}
 
-	if provider.instanceProperties.SecurePortEnabled {
-		instanceInfo.SecureVipAddress = provider.instanceProperties.ApplicationName
-		instanceInfo.SecurePort = &PortWrapper{
-			Enabled: "true",
-			Port:    provider.instanceProperties.SecurePort,
-		}
-		instanceInfo.SecureHealthCheckUrl = provider.getUrl(true, hostName, port, provider.instanceProperties.HealthCheckUrl)
+	instanceInfo.SecureVipAddress = provider.instanceProperties.ApplicationName
+	instanceInfo.SecurePort = &PortWrapper{
+		Enabled: strconv.FormatBool(provider.instanceProperties.SecurePortEnabled),
+		Port:    provider.instanceProperties.SecurePort,
 	}
-	instanceInfo.Status = InstanceStatusStarting
+	instanceInfo.SecureHealthCheckUrl = provider.getUrl(true, hostName, port, provider.instanceProperties.HealthCheckUrl)
+	instanceInfo.Status = InstanceStatusUp
 
 	provider.instanceInfo = instanceInfo
 	return instanceInfo
