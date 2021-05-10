@@ -5,6 +5,13 @@ import (
 )
 
 type DiscoveryClient struct {
+	httpClient HttpClient
+}
+
+func newDiscoveryClient(httpClient HttpClient) DiscoveryClient {
+	return DiscoveryClient{
+		httpClient,
+	}
 }
 
 func (discoveryClient DiscoveryClient) GetDescription() string {
@@ -16,5 +23,17 @@ func (discoveryClient DiscoveryClient) GetServiceInstances(serviceId string) []c
 }
 
 func (discoveryClient DiscoveryClient) GetServices() []string {
-	return nil
+	applications, err := discoveryClient.httpClient.GetApplications()
+
+	names := make([]string, 0)
+
+	if err != nil {
+		return names
+	}
+
+	for _, application := range applications.Applications {
+		names = append(names, application.Name)
+	}
+
+	return names
 }
